@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<!-- 臺灣手語電子繪本 手語圖獨小遊戲 
+       由國立臺灣圖書館委託國立臺中科技大學多媒體設計系開發製作 
+       計畫主持人: 黃國峰老師
+       版本: 2026 
+  -->
+
+<head>
+    <title>手語圖獨小遊戲</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link href="css/bootstrap5.min.css" rel="stylesheet">
+    <link href="./css/sudoku.css" rel="stylesheet">
+<body>
+    <div id="gamebox" class="container-md invisible">
+        <div class="w-100 d-flex justify-content-center m-3 position-relative">
+            <a href="#" title="回系統首頁"><img id="logo" src="./images/LOGO.PNG" alt="Game" height="150px"></a>
+            <button id="btnBack"
+                class="prevPage translate-middle badge bg-warning rounded-pill fs-6 text-dark">回上頁</button>
+            <div class="score d-flex">
+            </div>
+            <div class="timer d-flex">
+                <p>00:00</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-3 mb-2 mt-0">
+                <div id="boxCandidate" class="row g-1 p-2 h-100">
+                    <!-- 4 Candidates-->
+                    <div v-for="(item,idx) in Candidate" :id="'ori-drop'+(idx+1)"
+                        class="col-3 col-lg-12  ori-drop border border-3 rounded-2 border-warning">
+                        <div class="">
+                            <div v-for="(cand,cidx) in Candidate[idx]" :data-val="cand.val"
+                                class="drag p-1 border rounded-1 border-warning">
+                                <h3 class="wordname text-center rounded-pill" v-show:false>{{cand.img}}</h3>
+                                <img :src="'images/'+cand.img+'.jpg'" :alt="cand.img" class="img-fluid rounded">
+                            </div>
+                        </div>
+                        <h4>{{item[0].img}}</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- Blocks -->
+            <div class="col-12 col-lg-9">
+                <div id="boxBlock" class="row row-cols-2 row-cols-lg-2 g-0">
+                    <!-- Block Template-->
+                    <div class="col" v-for="(block,idx) in Block">
+                        <div class="card h-100 border border-danger">
+                            <div class="card-body p-2">
+                                <div class="row row-cols-2 g-1">
+                                    <div v-for="item in Block[idx]" class="col w-50 position-relative ">
+                                        <div :class="{'drop':item.val==0,'undrop':item.val!=0}" :data-row="item.r"
+                                            :data-col="item.c" class="p-0">
+                                            <h3 v-if="item.val!=0" class="wordname text-center rounded-pill"
+                                                v-show:false>{{item.img}}</h3>
+
+                                            <img v-if="item.val!=0" :src="'images/'+item.img+'.jpg'" :alt="item.img"
+                                                class="img-fluid h-100 rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row w-100 mt-1 mx-0 p-0 ">
+                    <div class="col-2">
+                        <h6 id="rewardTitle"
+                            class="p-2 fs-6 text-center text-danger mt-2   rounded-pill bg-warning   border-3">
+                            勳章</h6>
+                    </div>
+                    <div class="col-10 d-flex p-0 m-0">
+                        <div id="rewardBox" class="row">
+                            <!-- <div class="reward col-1 p-1">
+                                    <p class="fs-3">1</p>
+                                    <img src="images/Flower.png" alt="reward" width="100%" class="img-fluid">
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The menu Modal -->
+    <div class="modal modal-lg fade" id="menuModal" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header d-flex justify-content-center">
+                    <img src="./images/LOGO.PNG" alt="Game" height="120px">
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body row px-3">
+                    <div class="col-12 col-md-4 d-flex justify-content-center"><button id="btnMenu1"
+                            class="btn-custom rounded-pill p-0 m-3 position-relative"> <span
+                                class="position-absolute top-0 start-100 translate-middle badge bg-warning rounded-pill border-top border-end border-success fs-6 text-dark">1~3級</span></button>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex justify-content-center"><button id="btnMenu2"
+                            class="btn-custom rounded-pill p-0 m-3 position-relative"> <span
+                                class="position-absolute top-0 start-100 translate-middle badge bg-warning rounded-pill border-top border-end border-success fs-6 text-dark">4~6級</span></button>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex justify-content-center"><button id="btnMenu3"
+                            class="btn-custom rounded-pill p-0 m-3 position-relative"> <span
+                                class="position-absolute top-0 start-100 translate-middle badge bg-warning rounded-pill border-top border-end border-success fs-6 text-dark">7~10級</span></button>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-6">
+                            <button id="btnHow" type="button" class="btn btn-danger btn-lg rounded-pill">玩法教學</button>
+                        </div>
+                        <div class="col-6">
+                            <label id="lblVolume" for="auVolume" class="form-label fs-5">音量: 50%</label>
+                            <input type="range" class="form-range slider" min="0" max="10" step="1" value="5"
+                                id="auVolume">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The win modal -->
+    <div class="modal fade" id="winModal" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div id="winHeader" class="modal-header d-flex justify-content-center">
+                    <h3>獲得勳章</h3>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body d-flex justify-content-center g-5">
+                    <div id="box">
+                        <div id="coin">
+                            <h3>P</h3>
+                        </div>
+                        <p id="point">+100</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The howto modal -->
+    <div class="modal fade modal-xl " id="howtoModal" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen-md-down">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body d-flex justify-content-center g-5">
+                    <video id="sudokuHowto" src="./sounds/Howto.mp4" width="100%" height="100%" class="img-fluid"
+                        controls></video>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer d-flex justify-content-center">
+                    <button id="btnBackMenu" type="button" class="btn btn-danger btn-lg rounded-pill">回選單</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <svg width="1" height="1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <g id="balloon">
+                <path class="color"
+                    d="M30.32,85.27l2.6-3.67,2.18,3.67a3.09,3.09,0,0,1-2.39,1A2.63,2.63,0,0,1,30.32,85.27Z" />
+                <ellipse class="color" cx="32.92" cy="41.72" rx="32.92" ry="41.72" />
+                <ellipse cx="50.5" cy="20.4" rx="5.23" ry="13.48" transform="translate(-3 30.59) rotate(-32.78)"
+                    class="ballEllipse" />
+            </g>
+            <g id="pop">
+                <path class="color"
+                    d="M10.4,1.06s23.25-3.73,31.65,2.8S52,21,52,21s-3.73-11-9.33-10.5-11.47,4.89-11.47,4.89,5.65-11.52,0-11.52-16.55.63-16.55.63Z" />
+                <path class="color" d="M31.21,29.08s13,4.36,15.51,0,6.85,0,6.85,0L45.79,46.51S34.84,44.57,33,36.83Z" />
+                <path class="color"
+                    d="M14.86,6.71l-4,15.14,5.3,3.83s-5.85,3.84-1.43,7.81,13,3.27,13,3.27S-.89,43.33,0,30.93,14.86,6.71,14.86,6.71Z" />
+            </g>
+            <g id="confetti_1">
+                <path class="color"
+                    d="M54.5,26l4.378,15.547l14.168,0l-11.462,9.609l4.378,15.547l-11.462,-9.609l-11.462,9.609l4.378,-15.547l-11.462,-9.609l14.168,-0l4.378,-15.547Z" />
+            </g>
+            <g id="confetti_2">
+                <path class="color"
+                    d="M54.5,26l4.378,15.547l14.168,0l-11.462,9.609l4.378,15.547l-11.462,-9.609l-11.462,9.609l4.378,-15.547l-11.462,-9.609l14.168,-0l4.378,-15.547Z" />
+            </g>
+        </defs>
+    </svg>
+    <svg id="behind" width="1" height="1"></svg>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery.ui.touch-punch.js"></script>
+<script src="js/bootstrap5.bundle.min.js"></script>
+<script src="js/vue.runtime.global.prod.js"></script>
+<script src="js/gsap/gsap.min.js"></script>
+<script src="js/gsap/MotionPathPlugin.min.js"></script>
+<script src="js/gsap/DrawSVGPlugin.min.js"></script>
+<script src="js/Sudoku.js"></script>
+<script src="js/game.js"></script>
+<script src="js/balloon.js"></script>
+</head>
+
+</html>

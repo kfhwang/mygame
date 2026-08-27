@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<!-- 臺灣手語電子繪本 手語記憶小遊戲 
+       由國立臺灣圖書館委託國立臺中科技大學多媒體設計系開發製作 
+       計畫主持人: 黃國峰老師
+       版本: 2026 
+  -->
+<head>
+    <title>手語記憶小遊戲</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="css/jquery-ui.css"> -->
+    <link href="css/bootstrap5.min.css" rel="stylesheet">
+    <link href="./css/memory.css" rel="stylesheet">
+
+<body>
+    <div id="gamebox" class="container invisible">
+        <div class="d-flex justify-content-center m-0 position-relative align-self-baseline">
+            <a href="#" title="回系統首頁"><img id="logo" src="./images/LOGO.PNG" alt="Game"></a>
+            <button id="btnBack"
+                class="prevPage translate-middle badge bg-warning rounded-pill fs-6 text-dark">回上頁</button>
+            <div class="score d-flex">
+            </div>
+            <div class="timer d-flex">
+                <p>00:00</p>
+            </div>
+        </div>
+
+        <div id="cardBoard" class="mt-3">
+            <div class="">
+                <div class="card">
+                    <img src="">
+                    <img src="covers/Card_Easy.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The menu Modal -->
+    <div class="modal modal-lg fade" id="menuModal" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header d-flex justify-content-center">
+                    <img src="./images/LOGO.PNG" alt="Game" height="120px">
+                </div>
+                <!-- Modal body -->
+                  <div class="modal-body row px-3">
+                    <div class="col-12 col-md-4 d-flex justify-content-center">
+                        <button id="btnMenu1" class="btn-custom rounded-pill p-0 m-3 position-relative"></button>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex justify-content-center">
+                        <button id="btnMenu2" class="btn-custom rounded-pill p-0 m-3 position-relative"></button>
+                    </div>
+                    <div class="col-12 col-md-4 d-flex justify-content-center">
+                        <button id="btnMenu3" class="btn-custom rounded-pill p-0 m-3 position-relative"></button>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col-6">
+                            <button id="btnHow" type="button" class="btn btn-danger btn-lg rounded-pill">玩法教學</button>
+                        </div>
+                        <div class="col-6">
+                            <label id="lblVolume" for="auVolume" class="form-label fs-5">音量: 50%</label>
+                            <input type="range" class="form-range slider" min="0" max="10" step="1" value="5"
+                                id="auVolume">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The win modal -->
+    <div class="modal fade" id="winModal" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div id="winHeader" class="modal-header d-flex justify-content-center">
+
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body d-flex justify-content-center g-5">
+                    <video id="vidplayer" autoplay loop muted playsinline width="100%" height="100%">
+                        <source src="" id="IOSVid" type='video/quicktime'>
+                        <source src="" id="AndroidVid" type='video/webm'>
+                    </video>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer d-flex justify-content-center g-5">
+
+                    <button id="btnReplay" class="btn-custom rounded-pill p-0 m-3 position-relative"> </button>
+                    <button id="btnBackMenu" class="btn-custom rounded-pill p-0 m-3 position-relative"> </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The howto modal -->
+    <div class="modal fade modal-xl " id="howtoModal" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen-md-down">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body d-flex justify-content-center g-5">
+                    <video id="memoryHowto" src="sounds/howto.mp4" width="100%" height="100%" class="img-fluid" controls></video>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer d-flex justify-content-center">
+                    <button id="btnHowToMenu" type="button" class="btn-custom rounded-pill p-0 m-3 position-relative"> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap5.bundle.min.js"></script>
+<script src="js/vue.runtime.global.prod.js"></script>
+<script src="js/gsap/gsap.min.js"></script>
+<script src="js/pairgame.js"></script>
+<script src="js/game.js"></script>
+</head>
+
+</html>

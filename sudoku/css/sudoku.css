@@ -1,0 +1,396 @@
+ html {
+     font-family: -apple-system, -apple-system,
+         BlinkMacSystemFont, 'Segoe UI', Roboto,
+         Oxygen, Ubuntu, Cantarell, 'Open Sans',
+         'Helvetica Neue', sans-serif;
+ }
+
+ body {
+     padding: 0;
+     background-repeat: repeat-y;
+     background-size: 100% 100%;
+     backdrop-filter: blur(2px);
+     height: 100vh;
+     padding: 15px;
+     margin-top: 0 !important;
+     position: relative;
+     transition: background 0.5s ease;
+ }
+
+ @media screen and (min-width: 768px) {
+     body {
+         background-image: url("../images/Bg_Menu.jpg");
+     }
+
+     .timer {
+         min-width: 110px;
+         height: 75px;
+         border-image-slice: 5 35 5 35 fill;
+     }
+
+     .timer p {
+         font-size: 1.5em;
+     }
+
+     .score {
+         font-size: 1.5em;
+         min-width: 180px;
+         height: 75px;
+         border-image-slice: 5 35 5 35 fill;
+         padding: 7px 10px;
+     }
+ }
+
+ @media screen and (max-width: 768px) {
+     body {
+         background-image: url("../images/Bg_Menu_phone.jpg");
+     }
+
+     .timer {
+         min-width: 60px;
+         height: 55px;
+         border-image-slice: 25 30 25 30 fill;
+     }
+
+     .timer p {
+         font-size: 1.1em;
+     }
+
+     .score {
+         font-size: 1.1em;
+         min-width: 90px;
+         height: 55px;
+         border-image-slice: 25 30 25 30 fill;
+         padding: 2px 5px;
+     }
+ }
+
+ #gamebox {
+     max-width: 800px;
+     margin-top: -15px;
+
+ }
+
+ .dragover {
+     outline: 5px dotted rgb(214, 5, 233);
+     /* animation: flash 1s ease-out 0s infinite reverse; */
+
+ }
+
+ .dropover {
+     outline: 4px dotted #f00;
+ }
+
+ .dropped {
+     outline: 2px solid #c402c7;
+     animation: flash .6s ease-out .1s 2 reverse;
+     outline-offset: 0px;
+     position: relative;
+ }
+
+ .drag {
+     position: absolute;
+     margin: 0px;
+     left: 0;
+     top: 0;
+     width: 100%;
+     padding: 0px;
+     z-index: 100;
+
+ }
+
+ .wordname {
+     position: absolute;
+     left: 0%;
+     top: 0%;
+     width: 80%;
+     transform: translate(10%, -60%);
+     color: #f11303;
+     border-radius: 5px;
+     background-color: rgba(255, 255, 0, 0.2)
+ }
+
+ .ori-drop {
+     /* background-color: rgb(49 234 239 / 60%); */
+     /* background: linear-gradient(to bottom, #fcfcfc 0%, #f6f1cc 70%, #d3c18c 100%); */
+     position: relative;
+ }
+
+ .drop {
+     border: #b902bc solid 2px;
+     z-index: 50;
+     border-radius: 10px;
+     background-image: url("../images/drop.png");
+     background-size: cover;
+     height: 120px;
+     padding: 0px;
+ }
+
+ .undrop {
+     border: #ebb106 solid 2px;
+     z-index: 1;
+     border-radius: 8px;
+ }
+
+ .card {
+     height: 130px;
+     background-color: rgb(49 234 239 / 60%);
+ }
+
+ #rewardTitle {
+     -webkit-text-stroke: 0.2px #b902bc;
+     font-weight: bold;
+     border: #b902bc solid 2px;
+ }
+
+ .reward {
+     position: relative;
+     width: 70px;
+     height: 70px;
+ }
+
+ .reward p {
+     color: #b902bc;
+     position: absolute;
+     left: 30%;
+     top: 3.5em;
+     transform: translate(-50%, -50%);
+     -webkit-text-stroke: 1.5px white;
+     font-weight: bolder;
+
+ }
+
+ .notyet {
+     filter: saturate(0);
+ }
+
+ .timer {
+     display: none;
+     position: absolute;
+     right: 0%;
+     top: 4em;
+     padding: 0 0.5em;
+     border-image-source: url("../images/BG_Time.png");
+     border-color: transparent;
+     border-style: solid;
+     border-width: 10px 20px 10px 20px;
+ }
+
+ .timer p {
+     font-weight: bold;
+     font-family: 'Digital-7', monospace;
+     /* Adjusts the size of the font */
+     color: #c9e704;
+     /* Sets the color of the font */
+     text-shadow: 0 0 5px #32ed83;
+     margin: 5px;
+ }
+
+ .score {
+     display: none;
+     position: absolute;
+     right: 0%;
+     top: 0.1em;    
+     border-radius: 1.5em;
+     font-weight: bold;
+     font-family: 'Digital-7', monospace;
+     /* Adjusts the size of the font */
+     color: #c9e704;
+     /* Sets the color of the font */
+     text-shadow: 0 0 5px #32ed83;
+     margin: 0;
+     border-image-source: url("../images/BG_Time.png");
+     border-color: transparent;
+     border-width: 10px 20px 10px 20px;
+     border-style: solid;
+ }
+
+ #newrecord {
+     background-image: url("../images/award.png");
+     background-size: cover;
+     width: 1.7em;
+     height: 1.5em;
+ }
+
+ .prevPage {
+     position: absolute;
+     left: 2em;
+     top: 50%;
+ }
+
+ @keyframes flash {
+     0% {
+         /* background-color: transparent; */
+         /* Start with no highlight */
+         outline: 5px dotted rgba(242, 214, 104, 1);
+     }
+
+     50% {
+         /* background-color: #0f0; */
+         outline: 3px dotted rgb(231, 145, 6);
+         /* Flash to a highlight color */
+     }
+
+     100% {
+         /* background-color: transparent; */
+         /* Return to no highlight */
+         outline: 5px dotted rgb(240, 108, 1);
+     }
+ }
+
+
+ /*bs5 */
+ .slider::-webkit-slider-thumb {
+     background-color: #fd7e14;
+     /* Bootstrap's $orange color for the thumb */
+ }
+
+ /* Firefox thumb style */
+ .slider::-moz-range-thumb {
+     background-color: #fd7e14;
+ }
+
+ .modal.fade .modal-dialog {
+     transform: translate(0px, -150px);
+     /* Start 50px above its final position */
+     transition: transform 0.3s ease-out;
+     /* Add a smooth transition */
+ }
+
+ .modal.show .modal-dialog {
+     transform: translate(0, 0);
+     /* Final position */
+ }
+
+ .btn-custom {
+     background-color: transparent;
+     border: none;
+     /* border-radius: 30px; */
+     background-size: 80% 80%;
+     background-position: center;
+     background-repeat: no-repeat;
+     backdrop-filter: blur(10px);
+     width: 125px;
+     height: 80px;
+ }
+
+ .btn-custom:hover {
+     background-color: rgba(235, 120, 4, 0.1);
+     border: none;
+     box-shadow: inset 0 0 10px rgba(235, 120, 4, 0.3);
+     backdrop-filter: blur(10px);
+     filter: hue-rotate(-20deg);
+ }
+
+ .btn-custom:active,
+ .btn-custom:focus {
+     background-color: rgba(246, 168, 58, 0.3);
+     border: none;
+     backdrop-filter: blur(10px);
+ }
+
+ .modal-content {
+     border: #F48EAC solid 15px;
+     border-radius: 20px;
+     background-color: pink;
+ }
+
+ .modal.fade .modal-dialog {
+     transform: translate(0px, -250px);
+     /* Start 50px above its final position */
+     transition: transform 0.3s ease-out;
+     /* Add a smooth transition */
+ }
+
+ .modal.show .modal-dialog {
+     transform: translate(0, 0);
+     /* Final position */
+ }
+
+ #coin {
+     width: 50px;
+     height: 50px;
+     position: absolute;
+     background-color: #ff0;
+     border-radius: 50%;
+     border: rgb(211, 85, 0) solid 2px;
+     opacity: 1;
+     /* Initial state: fully visible */
+     transform: translateY(0);
+     /* Initial state: no vertical translation */
+     /*animation: myAnimation .5s ease-out 5; /* Apply the animation */
+     text-align: center;
+     color: #f00;
+     transform-style: preserve-3d;
+ }
+
+ #box {
+     padding-left: 0.5em;
+     position: relative;
+     width: 8vh;
+     height: 6vh;
+ }
+
+ #box p {
+     position: absolute;
+     right: -35%;
+     top: 45%;
+     transform: translate(-50%, -50%);
+     opacity: 1;
+     color: #f00;
+     /* Initial state: fully visible 
+        animation: fadeOutUp .5s ease-out 5; */
+ }
+
+ #box h3 {
+     margin: 0px;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+ }
+
+
+ .color {
+     fill: var(--color, black);
+ }
+
+ #svg {
+     position: absolute;
+     overflow: visible;
+     top: 0;
+     left: 0;
+ }
+
+
+ .balloon {
+     cursor: pointer;
+ }
+
+ .ballEllipse{
+     fill: #fff;
+     opacity: 0.4;
+ }
+ #behind_svg {
+     z-index: 1000;
+ }
+
+ #content {
+     z-index: 2000;
+ }
+
+ #svg {
+     z-index: 3000;
+ }
+
+ #btnMenu1 {
+     background-image: url("../images/Bg_Menu_Easy.png");
+ }
+
+ #btnMenu2 {
+     background-image: url("../images/Bg_Menu_Normal.png");
+ }
+
+ #btnMenu3 {
+     background-image: url("../images/Bg_Menu_Hard.png");
+ }

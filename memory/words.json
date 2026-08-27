@@ -1,0 +1,322 @@
+[
+  {
+    "name": "生日",
+    "ename": "Birthday",
+    "width": 3200,
+    "height": 129,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "故事",
+    "ename": "Story",
+    "width": 2304,
+    "height": 140,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "坐地排球",
+    "ename": "Volleyball",
+    "width": 4864,
+    "height": 169,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "運動",
+    "ename": "Exercise",
+    "width": 3072,
+    "height": 150,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "勝利",
+    "ename": "Victory",
+    "width": 1280,
+    "height": 144,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "校慶",
+    "ename": "SchoolCelebration",
+    "width": 4224,
+    "height": 155,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "公告",
+    "ename": "Announcement",
+    "width": 2304,
+    "height": 128,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "演講",
+    "ename": "Speech",
+    "width": 2304,
+    "height": 168,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "手語翻譯",
+    "ename": "Translation",
+    "width": 4480,
+    "height": 158,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "聽打",
+    "ename": "ListenTo",
+    "width": 3968,
+    "height": 128,
+    "bookname": "希兒與皮帝的神奇之旅",
+    "bookid": 12
+  },
+  {
+    "name": "學校",
+    "ename": "School",
+    "width": 1792,
+    "height": 141,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "旅行",
+    "ename": "Travel",
+    "width": 2048,
+    "height": 138,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "幫忙",
+    "ename": "Help",
+    "width": 1536,
+    "height": 142,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "參加",
+    "ename": "Participate",
+    "width": 1792,
+    "height": 144,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "開心",
+    "ename": "Happy",
+    "width": 1536,
+    "height": 139,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "輪椅",
+    "ename": "Wheelchair",
+    "width": 1792,
+    "height": 143,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "助聽器",
+    "ename": "HearingAid",
+    "width": 1664,
+    "height": 138,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "遊覽車",
+    "ename": "Tourbus",
+    "width": 1664,
+    "height": 128,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "羊",
+    "ename": "Sheep",
+    "width": 1664,
+    "height": 142,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "牛",
+    "ename": "Ox",
+    "width": 1536,
+    "height": 128,
+    "bookname": "每一個都要到",
+    "bookid": 14
+  },
+  {
+    "name": "水果",
+    "ename": "Fruit",
+    "width": 3072,
+    "height": 164,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "牛 ",
+    "ename": "Cow",
+    "width": 1920,
+    "height": 143,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "餵",
+    "ename": "Feed",
+    "width": 2688,
+    "height": 151,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "好吃",
+    "ename": "Delicious",
+    "width": 3072,
+    "height": 144,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "星星",
+    "ename": "Star",
+    "width": 2304,
+    "height": 146,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "鄰居 ",
+    "ename": "Neighbor",
+    "width": 3072,
+    "height": 166,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "感冒",
+    "ename": "CatchCold",
+    "width": 1920,
+    "height": 138,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "生病",
+    "ename": "Sick",
+    "width": 2304,
+    "height": 139,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "喝",
+    "ename": "Drink",
+    "width": 2688,
+    "height": 143,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "牛奶",
+    "ename": "Milk",
+    "width": 1920,
+    "height": 150,
+    "bookname": "愛吃水果的牛",
+    "bookid": 30
+  },
+  {
+    "name": "香蕉",
+    "ename": "Banana",
+    "width": 1920,
+    "height": 138,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  },
+  {
+    "name": "臺灣",
+    "ename": "Taiwan",
+    "width": 1664,
+    "height": 151,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  },
+  {
+    "name": "高雄",
+    "ename": "Kaohsiung",
+    "width": 1792,
+    "height": 145,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  },
+  {
+    "name": "變",
+    "ename": "Change",
+    "width": 1792,
+    "height": 145,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  },
+  {
+    "name": "年輕",
+    "ename": "Young",
+    "width": 1664,
+    "height": 141,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  },
+  {
+    "name": "消化",
+    "ename": "Digest",
+    "width": 1792,
+    "height": 136,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  },
+  {
+    "name": "榮耀",
+    "ename": "Honor",
+    "width": 1792,
+    "height": 143,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  },
+  {
+    "name": "電腦",
+    "ename": "Computer",
+    "width": 1792,
+    "height": 151,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  },
+  {
+    "name": "運送",
+    "ename": "Delivery",
+    "width": 1792,
+    "height": 145,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  },
+  {
+    "name": "倉庫",
+    "ename": "Storehouse",
+    "width": 1792,
+    "height": 151,
+    "bookname": "旗山香蕉大王",
+    "bookid": 38
+  }
+]

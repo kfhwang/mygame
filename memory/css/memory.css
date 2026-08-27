@@ -1,0 +1,374 @@
+ /* refer to sudoku*/
+ html {
+     font-family: -apple-system, -apple-system,
+         BlinkMacSystemFont, 'Segoe UI', Roboto,
+         Oxygen, Ubuntu, Cantarell, 'Open Sans',
+         'Helvetica Neue', sans-serif;
+    
+ }
+
+ body {
+     padding: 0;
+     /* background-repeat: repeat-y; */
+     background-size: auto 100%;
+     backdrop-filter: blur(2px);
+     height: 100vh;
+     padding-top: 15px;
+     margin-top: 0 !important;
+     position: relative;
+     transition: background 0.5s ease;
+     min-width: fit-content;
+ }
+
+ #gamebox {
+    margin-top: 15px;
+ }
+.hardBox{
+    max-width: 100%;
+    min-width: 480px;
+}
+.easyBox{
+    max-width: 65%;
+    min-width: 400px;
+}
+.midBox{
+    max-width: 70%;
+    min-width: 430px;
+}
+
+ @media (min-width: 992px) {
+     .row-cols-lg-8>* {
+         flex: 0 0 auto;
+         width: 12.5%;
+     }
+ }
+
+ #cardBoard {
+     margin-top: 50px;
+
+ }
+
+ @property --bangle {
+     syntax: "<angle>";
+     initial-value: 0deg;
+     inherits: false;
+ }
+
+ @keyframes bangle-rotate {
+     from {
+         --bangle: 0deg;
+     }
+
+     to {
+         --bangle: 360deg;
+     }
+ }
+
+ .bravo {
+     --bangle: 0deg;
+     animation: bangle-rotate 3s linear;
+     border: 5px solid transparent;
+     background: linear-gradient(rgba(239, 170, 49, .9), rgb(255, 255, 250,0.7)) padding-box,
+         conic-gradient(from var(--bangle),
+             oklch(100% 100% 0deg),
+             oklch(100% 100% 45deg),
+             oklch(100% 100% 90deg),
+             oklch(100% 100% 135deg),
+             oklch(100% 100% 180deg),
+             oklch(100% 100% 225deg),
+             oklch(100% 100% 270deg),
+             oklch(100% 100% 315deg),
+             oklch(100% 100% 360deg)) border-box;
+ }
+
+ .card {
+     background-color: rgba(239, 170, 49, 0.5);
+     margin: 0 auto;
+     max-width: 130px;
+     max-height: 130px;
+     padding: 0px;
+     border-radius: 15px;
+     position: relative;
+     overflow: hidden;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .card:hover {
+     cursor: pointer;
+ }
+
+ .card .cardAni {
+     display: block;
+     height: 126px;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+
+ }
+
+ .card .cardCover {
+     height: 100%;
+     width: 100%;
+     margin: 0;
+     border: 0px;
+     transform-style: preserve-3d;
+     transition: transform .3s;
+ }
+
+
+ .toHide {
+     transform: translate(0px, -130px);
+     transition: transform 0.3s ease-out;
+ }
+
+ .wordname {
+     position: absolute;
+     left: 5%;
+     top: 5%;
+     width: 100%;
+     transform: translate(0%, 0%);
+     color: #acfeff;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+     font-size: 1.3em;
+     font-weight: bold;
+ }
+
+ #rewardTitle {
+     -webkit-text-stroke: 0.2px #b902bc;
+     font-weight: bold;
+     border: #b902bc solid 2px;
+ }
+
+ .reward {
+     position: relative;
+     width: 70px;
+     height: 70px;
+ }
+
+ .reward p {
+     color: #b902bc;
+     position: absolute;
+     left: 30%;
+     top: 3.5em;
+     transform: translate(-50%, -50%);
+     -webkit-text-stroke: 1.5px white;
+     font-weight: bolder;
+
+ }
+
+ .notyet {
+     filter: saturate(0);
+ }
+
+ .timer {
+     display: none;
+     position: absolute;
+     right: 0%;
+     top: 4em;
+     padding-top: 0.5em;
+     border-image-source: url("../images/BG_Time.png");
+     border-color: transparent;
+     border-style: solid;
+     border-width: 10px 20px 10px 20px;
+ }
+
+ .timer p {
+     font-weight: bold;
+     font-family: 'Digital-7', monospace;
+
+     /* Adjusts the size of the font */
+     color: #c9e704;
+     /* Sets the color of the font */
+     text-shadow: 0 0 5px #32ed83;
+     /* margin: 5px; */
+ }
+
+ .score {
+     display: none;
+     position: absolute;
+     right: 0%;
+     top: 0.1em;
+     border-radius: 1.5em;
+     font-weight: bold;
+     font-family: 'Digital-7', monospace;
+
+     /* Adjusts the size of the font */
+     color: #c9e704;
+     /* Sets the color of the font */
+     text-shadow: 0 0 5px #32ed83;
+     margin: 0;
+     border-image-source: url("../images/BG_Time.png");
+     border-color: transparent;
+     border-width: 10px 20px 10px 20px;
+     border-style: solid;
+ }
+
+ #newrecord {
+     background-image: url("../images/award.png");
+     background-size: cover;
+     width: 1.7em;
+     height: 1.5em;
+ }
+
+ .prevPage {
+     position: absolute;
+     left: 2em;
+     top: 50%;
+ }
+
+ @media screen and (min-width: 768px) {
+     body {
+         background-image: url("../images/Bg_Menu.jpg");
+     }
+
+     .timer {
+         min-width: 110px;
+         height: 75px;
+         border-image-slice: 5 35 5 35 fill;
+     }
+
+     .timer p {
+         font-size: 1.5em;
+     }
+
+     .score {
+         font-size: 1.5em;
+         min-width: 180px;
+         height: 75px;
+         border-image-slice: 5 35 5 35 fill;
+         padding: 7px 10px;
+     }
+ }
+
+ @media screen and (max-width: 768px) {
+     body {
+         background-image: url("../images/Bg_Menu_phone.jpg");
+     }
+
+     #logo {
+         height: 90px;
+     }
+
+     #cardBoard {
+         margin-top: 0px;
+     }
+
+     .timer {
+         right: 30%;
+         top: 2em;
+         padding: 0px 0px;
+         width: auto;
+         height: 50px;
+         border-image-slice: 25 30 25 30 fill;
+         margin-top: -20px;
+         border-width: 10px 10px 10px 10px;
+     }
+
+     .timer p {
+         font-size: 1em;
+     }
+
+     .score {
+         right: 0%;
+         top: 1em;
+         border-width: 10px 10px 10px 10px;
+         font-size: 1em;
+         min-width: 60px;
+         height: 50px;
+         border-image-slice: 25 30 25 30 fill;
+         padding: 2px 2px;
+     }
+ }
+
+ /*bs5 */
+ .slider::-webkit-slider-thumb {
+     background-color: #fd7e14;
+     /* Bootstrap's $orange color for the thumb */
+ }
+
+ /* Firefox thumb style */
+ .slider::-moz-range-thumb {
+     background-color: #fd7e14;
+ }
+
+ .modal.fade .modal-dialog {
+     transform: translate(0px, -150px);
+     /* Start 50px above its final position */
+     transition: transform 0.3s ease-out;
+     /* Add a smooth transition */
+ }
+
+ .modal.show .modal-dialog {
+     transform: translate(0, 0);
+     /* Final position */
+ }
+
+ .btn-custom {
+     background-color: transparent;
+     border: none;
+     /* border-radius: 30px; */
+     background-size: 80% 80%;
+     background-position: center;
+     background-repeat: no-repeat;
+     backdrop-filter: blur(10px);
+     width: 125px;
+     height: 80px;
+ }
+
+ .btn-custom:hover {
+     background-color: rgba(239, 168, 97, 0.1);
+     border: none;
+     box-shadow: inset 0 0 5px rgba(243, 142, 42, 0.3);
+     backdrop-filter: blur(5px);
+     filter: hue-rotate(-20deg);
+ }
+
+ .btn-custom:active,
+ .btn-custom:focus {
+     background-color: rgba(246, 168, 58, 0.3);
+     border: none;
+     backdrop-filter: blur(10px);
+ }
+
+ .modal-content {
+     border: #F48EAC solid 15px;
+     border-radius: 20px;
+     background-color: pink;
+ }
+
+ .modal.fade .modal-dialog {
+     transform: translate(0px, -250px);
+     /* Start 50px above its final position */
+     transition: transform 0.3s ease-out;
+     /* Add a smooth transition */
+ }
+
+ .modal.show .modal-dialog {
+     transform: translate(0, 0);
+     /* Final position */
+ }
+
+ #btnMenu1 {
+     background-image: url("../images/Bg_Menu_Easy.png");
+ }
+
+ #btnMenu2 {
+     background-image: url("../images/Bg_Menu_Normal.png");
+ }
+
+ #btnMenu3 {
+     background-image: url("../images/Bg_Menu_Hard.png");
+ }
+
+ #btnReplay {
+     background-image: url("../images/Play_again.png");
+ }
+
+ #btnBackMenu {
+     background-image: url("../images/BackMenu.png");
+ }
+
+ #btnHowToMenu {
+     background-image: url("../images/BackMenu.png");
+ }
