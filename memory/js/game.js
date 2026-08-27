@@ -1,11 +1,11 @@
 
-var dragSound = new Audio("./sounds/Collect_point.mp3");
+var dragSound = new Audio("./sounds/Collect_Point.mp3");
 var dropSound = new Audio("./sounds/Craft.mp3");
 var oridropSound = new Audio("./sounds/Hit.mp3");
 oridropSound.volume = 0.2;
 var loseSound = new Audio("./sounds/Jingle_Lose.mp3");
 var winSound = new Audio("./sounds/Jingle_Win.mp3");
-var coinSound = new Audio("./sounds/point.mp3");
+var coinSound = new Audio("./sounds/Point.mp3");
 var newReward;
 var gameTm;
 var startTime;
